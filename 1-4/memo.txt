@@ -1,0 +1,9 @@
+rect또한 shortcut function이다.
+더 작게 나눠진 function이 존재하는데 그게 바로 moveTo, lineto
+- moveTo(x, y); => 브러쉬의 좌표를 움직여준다.
+- lineTo(x, y); => 라인을 그려준다.
+
+수평선 직선을 그리려면 두 y값이 같아야 한다.
+라인이 끝난 점이 다음에 시작하는 브러쉬의 좌표이다,
+정리하자면 fillRect = fill + Rect = fill + (moveTo + lineTo)
+
