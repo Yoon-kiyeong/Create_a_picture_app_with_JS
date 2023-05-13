@@ -7,3 +7,5 @@ rect또한 shortcut function이다.
 라인이 끝난 점이 다음에 시작하는 브러쉬의 좌표이다,
 정리하자면 fillRect = fill + Rect = fill + (moveTo + lineTo)
 
+- stroke(); 그은 선을 보여준다 (내부의 색을 채우지 않는다)
+- fill(); 내부의 색을 채운다.
