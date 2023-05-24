@@ -1,0 +1,38 @@
+우리는 색상 input이 있지만 예쁜 색깔을 찾기 힘들다.
+그래서 사용자에게 미리 제공하는 색상을 사용할 것이다.
+그리고 data-라는 attribute를 사용할 건데 - 다음에 넣고 싶은 값을 넣을 수 있기 때문
+html요소 안에 내가 넣고 싶은 값을 자유롭게 넣을 수가 있다.
+그래서 나중에 이 값을 활용해 자바스크립트에서 쓸 수 있다.
+
+이제 각 div에 이벤트리스너를 추가해줄것이다.
+그래서 forEach()를 사용했는데 forEach는 colorOptions의 함수가 아니라는 로그를 보게 된다.
+왜냐면 colorOptions은 배열이 아니기 때문이다.
+이건 HTMLCollection이기 때문이다. 이건 ArrayLike 객체지 Array(배열)이 아니다
+
+const colorOptions = Array.from(document.getElementsByClassName("color-option"));
+우리가 여기서 한 것은 배열을 생성해준것이다. 왜냐면 이건 배열로 주지 않고 HTMLCollection으로 주기 때문이다.
+그래서 우리는 이걸 자바스크립트의 배열로 만들고 싶은 것이다.
+그러면 이제 forEach를 쓸 수 있다. 각 color마다 이벤트리스너를 만들어주고 싶다.
+여기서 eventListener를 사용해서 click으로 만들고 onClick이라는 함수를 넣어준다.
+이제 우리가 할 것은 어떤 color가 클릭됐는지 알아내야 한다.
+
+우리가 여기서 한 것은 이 모든 color를 가져다가 이벤트리스너를 추가헸다.
+그러면 누군가 해당 color를 클릭하면 이 함수를 실행하게 될 것리다.
+그러면 어떤 색상이 클릭됐는지 알아야한다, 왜냐면 모두 같은 함수를 호출하고 있기 때문이다.
+
+그리고 정답은 data-color에 있다. data-color를 활용해서 어떤 색상이 클릭되었는지 알아낼 것이다.
+여기서 문제는 우리가 많은 정보를 얻지 못한다는 것
+보다시피, 클릭한 HTML만 보여주고 있는데, 별로 유용하지 않다.
+그래서 console.log 대신 console.dir()를 사용한다.
+그러면 모든 프로퍼티를 볼 수 있다.
+
+이제 내가 하고 싶은 것은, 당연히 ctx의 strokeStyle과 fillStyle을 바꿔주는 것이다.
+    ctx.strokeStyle = event.target.dataset.color;
+    ctx.fillStyle = event.target.dataset.color;
+이렇게 하는 대신 함수를 만들어서 한번에 하도록 만들어 보는 것이다.
+왜냐면 너무 많이 복사, 붙여넣기를 하기 때문, color를 바꾸는 함수를 만들어 볼 것이다.
+
+마지막으로 내가 하고 싶은 것은 사용자에게 이 클릭이 작동되었다는 걸 알려주고 싶다.
+지금은 클릭했을때 클릭이 작동헀는지 알 수 없다.
+그래서 우리는 color input을 가져다가 colorValue라는 변수를 만들고 값을 넣어준 뒤 color.value를 바꿔준다.
+
