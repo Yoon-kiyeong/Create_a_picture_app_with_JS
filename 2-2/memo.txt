@@ -1,3 +1,19 @@
 선을 그은 후에는 반드시 stroke를 넣을 것
 처음 클릭했을 때는 선이 그려지지 않는데, 이것은 우리가 moveTo()를 사용하지 않았기 때문
 만약 moveTo()가 없다면 클릭을 두 번 해야 함
+
+유저가 마우스를 눌렀는지 알아야 하는데 이건 click이라 부르지 않고 mousedown이라고 한다
+클릭은 마우스를 눌렀다가 뗐을 때 발생한다.
+mousedown은 마우스를 누른채로 유지하는 것을 말한다.
+mouseup은 마우스를 떼게 되면 발생한다.
+우리는 유저가 마우스를 움직이고 isPainting이 true일 때 그리도록 만들 것이다.
+만약 isPainting이 false면 연필을 움직이기만 할거고, isPainting이 true이면 선을 그리게 할 것이다.
+
+그러니까 만약 isPainting이 true라면, stroke를 써서 선을 그리고 함수를 끝내줄 것이다.
+만약 isPainting이 false라면, 조용히 브러쉬만 움직여줄것이다.
+
+이제 여기서 발생하는 작은 버그를 고치는데
+canvas로 와서 마우스를 누르고 canvas의 끝까지 움직이고 canvas를 벗어났을때, 다시 canvas로 돌아가면 아무것도 누르고 있지 않지만 그림을 그리고 있다.
+이것은 mouseUp 이벤트가 실행되지 않았기 떄문이다.
+우리가 할 수 있는 방법은 두 가지가 있는데, 하나는 canvas.addEventListener를 해주고 마우스가 떠났을 떄를 감지하는 것
+다른 방법은 docment에 mouseup 이벤트를 주는 것인데, 여기에서 isPainting을 false로 만드는 것
