@@ -1,0 +1,3 @@
+dblClick -> 더블클릭 이벤트
+ctx.text에 두 가지 옵션이 있다. 텍스트를 fill하거나, stroke하거나
+ctx.restore는 이전으로 되돌린다.
